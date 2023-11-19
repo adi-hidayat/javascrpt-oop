@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Constructor</title>
+</head>
+<body>
+<h2>Super Constructor</h2>
+- Class Inheritance sifatnya seperti Prototype Inheritance <br>
+- Bagaimana dengan Constructor Inheritânce? Sebenarnya Constructor Inheritance hanyalah
+melakukan eksekusi constructor lain dengan tujuan agar property di constructor lain bisa
+ditambahkan ke instance object ini <br>
+- Dalam kasus ini, jika kita ingin mencapai hasil yang sama, kita bisa menggunakan kata kunci super
+di dalam constructor <br>
+- Kata kunci super digunakan untuk memanggil constructor super class <br>
+- Jika di child class kita membuat constructor, maka kita wajib memanggil parent constructor,
+walaupun di parent tidak ada constructor
+</body>
+<script>
+
+        class Category{
+            constructor(categoryName) {
+                this.categoryName = categoryName;
+            }
+
+            createdAt()
+            {
+                console.log(this.categoryName);
+            }
+        }
+      class Product extends Category{
+            constructor(productName, categoryName) { // wajib memanggil constructor parrent
+                super(categoryName);
+                this.productName = productName;
+            }
+          createdAt() {
+              console.log(this.productName);
+          }
+      }
+
+    const category = new Category('Food');
+    category.createdAt();
+
+    const product = new Product('Bakso', 'Food');
+    product.createdAt();
+
+    console.log(category);
+    console.log(product);
+</script>
+</html>

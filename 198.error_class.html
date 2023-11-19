@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Membuat Class Error</title>
+</head>
+<body>
+    <h2>Membuat Class Error</h2>
+    - Walaupun JavaScript sudah memiliki standard class Error <br>
+    - Namun alangkah baiknya, kita membedakan tap jenis error <br>
+    - Untuk membuat error sendiri secara manual sangatlah mudah, cukup membuat class turnan dari
+    class Error <br>
+    - Dan jangan lupa tambahkan parameter message, agar bisa dikirimkan ke parameter di constructor
+    class Error
+</body>
+<script>
+    // class error
+    class Validation extends Error {
+        constructor(message, field) {
+            super(message);
+            this.field = field;
+
+        }
+
+    }
+
+    class Payment {
+        static subtotal(...amountItems) {
+            if (amountItems.length === 0) {
+                throw new Validation("Items amount tidak boleh kosong", "amountItems")
+            }
+            let subtotal = 0;
+            for (const total of amountItems) {
+                subtotal += total;
+            }
+
+            return subtotal;
+        }
+    }
+
+    try {
+        Payment.subtotal();
+    } catch (error) {
+        if (error instanceof Validation) {
+            console.error(`Terjadi error di field ${error.field} dengan error  : ${error.message}`)
+        } else {
+            console.error(`Terjadi Error : ${error.message}`);
+        }
+
+    }
+
+</script>
+</html>

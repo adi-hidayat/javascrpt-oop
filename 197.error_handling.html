@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Handling</title>
+</head>
+<body>
+  <h2>Error Handling</h2>
+  - Saat terjadi error di kode program JavaScript, kadang kita tidak ingin program kita berhenti <br>
+  - Di JavaScript, kita bisa menangkap jika terjadi error <br>
+  - Kita bisa menggunakan try catch statement untuk menangkap error <br>
+  - Pada block try, kita akan mencoba mengakses kode program yang bisa menyebabkan error, dan jika
+  terjadi error, block try akan berhenti dan otomatis mask ke block catch <br>
+  - Jika tidak terjadi error, block catch tidak akan dieksekusi
+<h2>Kata Kunci Finally</h2>
+  - Kadang kita ingin melakukan sesuatu entah itu terjadi error ataupun tidak <br>
+  - Dalam try catch, kita bisa menambahkan block finally <br>
+  - Block finally in akan selalu dieksekus setelah try catch selesai, entah terjadi error atau tidak, block
+  finally akan selalu dieksekusi
+<h2>Try Finally</h2>
+  - Kata kunci finally juga bisa digunakan tapa perlu menggunakan catch <br>
+  - Biasanya in digunakan dalam kasus tertentu
+</body>
+<script>
+    class Payment {
+        static subtotal(...amountItems) {
+            if (amountItems.length === 0) {
+                throw new Error("Items amount tidak boleh kosong")
+            }
+            let subtotal = 0;
+            for (const total of amountItems) {
+                subtotal += total;
+            }
+
+            return subtotal;
+        }
+    }
+
+    try {
+        Payment.subtotal();
+    } catch (error) {
+        console.error(`Terjadi Error : ${error.message}`);
+    } finally { // Kata Kunci Finaly
+        // blok ini akan selalu dieksekusi
+        console.log("Payment telah dijalankan")
+    }
+
+    // Try Finally
+    // contoh kasus menaikan angka sekaligus mengembalikan angka
+    class Counter{
+        constructor() {
+            this.value = 1;
+        }
+
+        next() {
+            try {
+                return this.value;
+            } finally {
+                this.value++;
+            }
+        }
+    }
+
+    const counter = new Counter();
+    console.log(counter.next());
+    console.log(counter.next());
+    console.log(counter.next());
+
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Method di Class</title>
+</head>
+<body>
+  <h2>Method di Class</h2>
+  - Membuat method di class sebenarnya bisa dilakukan dengan cara seperti menambahkan method
+  di constructor function <br>
+  - Namun, hal tersebut sebenarnya menambahkan method ke dalam instance obiect <br>
+  - Khusus untuk method sebaiknya kita menambahkan ke prototype, bukan ke instance object <br>
+  - Untung nya di class, ada cara mudah menambahkan method dan secara otomatis ditambahkan ke
+  prototype
+</body>
+<script>
+  class Product{
+    constructor(name) {
+      this.name = name;
+      this.createdAt = function () // method di dalam constructor tidak masuk ke dalam prototype
+      {
+        return 'Today';
+      }
+    }
+
+    // tidak perlu menambahkan kata kunci function
+    // secara otomatis ini akan masuk ke dalam instance object (Product)
+    isActive() { // masuk ke dalam prototype dan ini yang direkomendasikan untuk digunakan
+      return true;
+    }
+  }
+
+  const product = new Product("Bakso");
+  console.log(product);
+</script>
+</html>

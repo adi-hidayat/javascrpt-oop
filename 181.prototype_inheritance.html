@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype Inheritance</title>
+</head>
+<body>
+<h2>Prototype Inheritance</h2>
+- Sekarang kita sudah tahu, bahwa prototype selalu memiliki parent, artinya dia adalah turnan,
+parent tertinggi adalah Object prototype <br>
+- Pertanyaannya bagaimana jika kita ingin melakukan inheritance ke Prototype lain? <br>
+- Hal ini juga bisa dilakukan, namun agak sedikit tricky, karena hal ini, sebenarnya untuk JavaScript
+modern, tidak direkomendasikan lagi praktek OOP menggunakan Prototype, karena di ES6 sudah
+dikenalkan kata kunci class yang akan anti dibahas di chapter tersendiri
+</body>
+<script>
+    function Category(totalProduct){
+        this.categoryName = "Food";
+        this.totalProduct = totalProduct;
+    }
+
+    function Product()
+    {
+        this.productName = "Indomie";
+        Category.call(this, 10);
+    }
+    // contoh yang pewarisan yang salah
+    Product.prototype = Category.prototype;
+
+    Product.prototype.showCode = function () {
+        return 'PRODUCT CODE ' + 123;
+    }
+
+    Category.prototype.showCode = function () {
+        return 'CATEGORY CODE ' + 123;
+    }
+
+    const product1 = new Product();
+    console.log(product1.showCode()); // keduanya akan menjadi hal yang sama
+
+    const category1 = new Category();
+    console.log(category1.showCode()); // keduanya akan menjadi hal yang sama
+    // end contoh pewarisan yang salah
+
+    // contoh yang benar
+    Product.prototype = Object.create(Category.prototype);
+    Product.prototype.createdAt = function()
+    {
+        return 'Product created at ' + '2023-01-01';
+    }
+
+    Category.prototype.createdAt = function ()
+    {
+        return 'Category created at ' + '2023-02-02';
+    }
+
+    const product2 = new Product();
+    console.log(product2.createdAt());
+
+    const category2 = new Category();
+    console.log(category2.createdAt());
+</script>
+</html>

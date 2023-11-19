@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Constructor Inheritance</title>
+</head>
+<body>
+  <h2>Constructor Inheritance</h2>
+  - Dalam constructor kita biasanya membuat property baik itu berisi value ataupun function <br>
+  - Di dalam constructor, kita bisa memanggil constructor lain, dengan begitu kita bisa mewarisi
+  semua property yang dibuat di constructor lain tersebut <br>
+  - Untuk memanggil constructor lain, kita bisa menggunakan NamaConstructor.call(this, parameter)
+</body>
+<script>
+  function Category(totalProduct){
+    this.categoryName = "Food";
+    this.totalProduct = totalProduct;
+  }
+
+  function Product(productName, totalProduct)
+  {
+    this.productName = productName;
+    Category.call(this, totalProduct);
+  }
+
+  const product = new Product("Indomie", 10);
+  console.log(product);
+</script>
+</html>

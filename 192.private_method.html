@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Private Method</title>
+</head>
+<body>
+  <h2>Private Method</h2>
+  - Sama seperti field, terdapat proposal juga untuk menambah fitur private method di EcmaScript <br>
+  - Dengan demikian, access modifier private juga bisa digunakan di method <br>
+  - Caranya sama, dengan menambahkan tada # diawal method, maka secara otomatis method <br>
+  tersebut adalah private
+  - Ingat fitur ini mash dalam tahapan, belum benar-benar menjadi standard EcmaScript, jadi mungkin
+  tidak semua browser mendukung fitur ini <br>
+  https://github.com/tc39/proposal-private-methods
+</body>
+<script>
+  class Person {
+    say(name) {
+      if (name) {
+        this.#sayWithName(name);
+      } else {
+        this.#sayWithoutName();
+      }
+    }
+
+    #sayWithoutName(){
+      console.log("Hello");
+    }
+
+    #sayWithName(name){
+      console.log("Hello " + name);
+    }
+  }
+
+  const person = new Person();
+  person.say() // withoutName
+  person.say("Adi") // withName
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Static Method</title>
+</head>
+<body>
+<h2>Static Method</h2>
+- Kata kunci static juga tidak hanya bisa ditambahkan di field, tapi juga di method <br>
+- Jika kita tambahkan di method, artinya method tersebut jadi mi ik class nya, bukan prototype <br>
+- Dan untuk mengakses method tersebut, kita juga bisa lakukan seperti mengakses static class field
+</body>
+<script>
+    class Payment {
+        static subtotal(...amountItems) {
+            let subtotal = 0;
+            for (const total of amountItems) {
+                subtotal += total;
+            }
+
+            return subtotal;
+        }
+    }
+
+    const subtotal = Payment.subtotal(15000, 30000, 50000, 12000);
+    console.log(subtotal);
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+  <h2>Error</h2>
+  - Saat membuat aplikasi, sudah tent kita tidak akan terhindar dari yang namanya error <br>
+  - Di JavaScript, Error merupakan sesuatu yang sudah standar <br>
+  - Banyak sekali class error di JavaScript, namun semua class error di JavaScript selalu berujung di <br>
+  class Error, artinya class Error adalah superclass untuk semua jenis error di JavaScript
+  - Contoh class error yang terdapat di JavaScript contonya SyntaxError, TypeError, EvalError, dan
+  lain-lain <br>
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/GlobalObiects/Error#error
+  types
+<h2>Throw Error</h2>
+  - Saat kita membuat instance object dari class Error, tidak lantas otomatis terjadi error <br>
+  - Kita perlu memberitahu program kita, bahwa kita akan mentrigger sebuah error terjadi, atau
+  istilahnya adalah melempar error (throw error) <br>
+  - Untuk melempar error, kita bisa gunakan kata kunci throw, dikuti dengan instance object error
+  nya <br>
+  - Jika terjadi error, maka otomatis kode program kita akan terhenti, dan kita bisa melihat detail
+  errornya di console di aplikasi browser kita
+</body>
+<script>
+  class Payment {
+    static subtotal(...amountItems) {
+      if (amountItems.length === 0) {
+        throw new Error("Items amount tidak boleh kosong")
+      }
+      let subtotal = 0;
+      for (const total of amountItems) {
+        subtotal += total;
+      }
+
+      return subtotal;
+    }
+  }
+
+  const subtotal = Payment.subtotal();
+  console.log(subtotal);
+</script>
+</html>

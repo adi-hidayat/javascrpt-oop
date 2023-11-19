@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Public Class Field</title>
+</head>
+<body>
+  <h2>Public Class Field</h2>
+  - Biasanya, saat kita ingin menambahkan field (property yang berisi value), kita biasanya tambahkan
+  di constructor <br>
+  - Namun, ada proposal di EcmaScript yang mengajukan pembuatan public class field ditempatkan
+  diluar constructor, selevel dengan penempatan method <br>
+  - Proposal ini masih belum final, namun beberapa browser sudah mendukung nya <br>
+  https://github.com/tc39/proposal-class-fields
+</body>
+<script>
+    class Outlet {
+        name;
+        city;
+        fullAddress;
+    }
+
+    const outlet1 = new Outlet();
+    outlet1.name = "Outlet Lampung";
+
+    console.log(outlet1);
+</script>
+</html>

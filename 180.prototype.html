@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype</title>
+</head>
+<body>
+<h2>Prototype</h2>
+- JavaScript sebelumnya dikenal dengan pemrograman berbasis prototype <br>
+- Memang agak sedikit membingungkan, dan tidak dipungkiri, banyak sekali yang bingung dengan
+  konsep prototype di JavaScript <br>
+- Pada chapter ini, kita akan bahas tentang konsep prototype
+
+<h2>Prototype Inheritance</h2>
+- Saat kita membuat object dari constructor function, object tersebut disebut instance, semua
+property (baik itu value atau method), akan berada di dalam instance object nya <br>
+- Setiap kita membuat sebuah constructor function. maka secara otomatis akan dibuatkan
+prototype nya, misal ketika kita membuat constructor function Person, maka akan ada
+  Person.prototype <br>
+- Saat kita membuat sebuah object instance, secara otomatis object tersebut adalah turunan dari
+  Constructor.prototype nva <br>
+- Untuk mengakses prototype mili sebuah instance, kita bisa menggunakan __proto__ / [[Prototype]]
+
+<h2>Menambah Property ke Prototype</h2>
+- Property mirip object, dimana kita bisa menambah property baik itu value ataupun method <br>
+- Saat kita menambah sebuah property ke Prototype, secara otomatis, semua object instance yang
+turunan dari prototype tersebut akan memiliki property tersebut
+
+<h2>Cara Kerja Prototype Inheritance</h2>
+- Bagaimana bisa property di prototype diakses dari object instance? <br>
+- Ketika kita mengakses property di object instance, pertama akan di cek apakah di object tersebut
+terdapat property tersebut atau tidak, jika tidak, maka akan di cek di __proto__ (prototype) nya, jika
+masih tidak ada, akan di cek lagi di __proto__ (prototype) yang lebih tinggi, begitu seterusnya,
+sampai berakhir di Object Prototype
+</body>
+<script>
+  function Product()
+  {
+    this.name = "Indomie";
+    this.price = "3500";
+    this.sayHello = function() {
+      console.log("Hello");
+    }
+  }
+
+  // menambahkan property ke prototype
+  const product1 = new Product();
+  // menambahkan property ke prototype
+  product1.isExpensive = function()
+  {
+    console.log(false);
+  }
+  console.info(product1);
+
+  // menambahkan property ke seluruh data yang menggunakan constructor yang sama
+  Product.prototype.expiryDate = function()
+  {
+    return '2024-03-01';
+  }
+
+  // maka property expiry date akan diterapkan ke product1 dan product2
+  const product2 = new Product();
+  console.log(product2);
+
+  // mengakses prototype
+  console.log(product1.expiryDate());
+
+</script>
+</html>

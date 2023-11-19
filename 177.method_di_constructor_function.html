@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Method di Constructor Function</title>
+</head>
+<body>
+  <h2>Method di Constructor Function</h2>
+  - Sama seperti pada tipe data object biasanya, kita juga bisa menambahkan method di dalam
+  constructor function <br>
+  - Jika kita tambahkan method di constructor function, secara otomatis object yang dibuat akan
+  memiliki method tersebut
+
+</body>
+<script>
+  function Person(){
+    this.firstName = "";
+    this.lastName = "";
+    this.sayHello = function (name)
+    {
+      console.log(`Hello ${name}`);
+    }
+  }
+
+  const person = new Person();
+  person.firstName = "Adi";
+  person.lastName = "Hidayat";
+  person.sayHello(person.firstName + " " + person.lastName);
+
+  console.log(person);
+</script>
+</html>

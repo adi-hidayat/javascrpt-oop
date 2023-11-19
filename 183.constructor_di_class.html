@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Constructor di Class</title>
+</head>
+<body>
+<h2>Constructor di Class</h2>
+- Karena bentuk constructor function mirip dengan function, jadi kita bisa menambah parameter
+pada constructor function, lantas bagaimana dengan class? <br>
+- Di class juga kita bisa menambah constructor, dimana dengan menggunakan constructor, kita juga
+bisa menambah parameter sat pertama kali membuat object nya
+Untuk membuat constructor di class, kita bisa menggunakan kata kunci constructor
+</body>
+<script>
+    class Product{
+        constructor(name, price) {
+            console.log(name, price)
+        }
+    }
+
+    const product = new Product("Ayam Geprek Jumbo", 22500);
+    console.log(product);
+</script>
+</html>
